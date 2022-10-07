@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SingersClient {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         Singers singer1 = new Singers();
 
@@ -27,10 +27,7 @@ public class SingersClient {
 
 
 
-        try {
             singer1.setAll(1,"Charlie","Catalina Cres ON",sdf.parse(birthday),5);
-            Map<String, Object> s= beanProperties(singer1);
-            System.out.println(s);
 
             Singers[] singerArray = new Singers[6];
 
@@ -51,36 +48,9 @@ public class SingersClient {
 
 
 
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
 
     }
-    public static Map<String, Object> beanProperties(Object bean) {
-        try {
-            return Arrays.asList(
-                            Introspector.getBeanInfo(bean.getClass(), Object.class)
-                                    .getPropertyDescriptors()
-                    )
-                    .stream()
-                    // filter out properties with setters only
-                    .filter(pd -> Objects.nonNull(pd.getReadMethod()))
-                    .collect(Collectors.toMap(
-                            // bean property name
-                            PropertyDescriptor::getName,
-                            pd -> { // invoke method to get value
-                                try {
-                                    return pd.getReadMethod().invoke(bean);
-                                } catch (Exception e) {
-                                    // replace this with better error handling
-                                    return null;
-                                }
-                            }));
-        } catch (IntrospectionException e) {
-            // and this, too
-            return Collections.emptyMap();
-        }
-    }
+
 
 
 }

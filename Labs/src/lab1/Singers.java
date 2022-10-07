@@ -81,8 +81,11 @@ public class Singers {
 
     }
 
+    /**
+     * here , just for test the get methods of the Singers class.
+     */
     @Override
     public String toString() {
-        return "| id:" + this.id +"| name: " +this.name +"| address :" + this.address + "| birthday: " + this.birthday +"| albumsPublished: " + this.albumsPublished+" |";
+        return "| id:" + this.getId() +"| name: " +this.getName() +"| address :" + this.getAddress() + "| birthday: " + this.getBirthday() +"| albumsPublished: " + this.getAlbumsPublished()+" |";
     }
 }

@@ -4,6 +4,6 @@ import volume1.innerclass.TalkingClock.TimerPrinter;
 
 public class Test {
     public static void main(String[] args) {
-      // TimerPrinter t = new TimerPrinter();
+        System.out.println("hello linux");
     }
 }
